@@ -82,7 +82,7 @@ class ContactItem extends StatelessWidget {
                           color: const Color(0xFF29384D),
                         ),
                         overflow: TextOverflow.ellipsis,
-                        maxLines: 2,
+                        maxLines: 1,
                       ),
                     ),
                   ],
@@ -109,13 +109,16 @@ class ContactItem extends StatelessWidget {
               ],
             ),
           ),
-
+          const Spacer(),
           GestureDetector(
             onTap: onTap,
             child: Container(
               width: double.infinity,
               padding: const EdgeInsets.symmetric(vertical: 5),
-              margin: const EdgeInsets.symmetric(horizontal: 10),
+              margin: const EdgeInsets.symmetric(
+                horizontal: 10,
+                vertical: 10,
+              ),
               decoration: const BoxDecoration(
                 color: Color(0xFFF93E3E),
                 borderRadius: BorderRadius.all(Radius.circular(8)),
