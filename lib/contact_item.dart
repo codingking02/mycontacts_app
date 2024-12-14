@@ -137,9 +137,6 @@ class ContactItem extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(
-            height: getMediaQueryHeight(0.01, context),
-          ),
         ],
       ),
     );
