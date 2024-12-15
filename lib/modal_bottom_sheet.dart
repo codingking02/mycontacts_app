@@ -7,8 +7,10 @@ import 'package:mycontacts_app/model/contact.dart';
 import 'package:mycontacts_app/widgets/widgets.dart';
 
 class ModalBottomSheet extends StatefulWidget {
-  ModalBottomSheet({super.key, required this.contacts});
+  ModalBottomSheet(
+      {super.key, required this.contacts, required this.onUpdateContacts});
   List<Contact> contacts = [];
+  final void Function(List<Contact>) onUpdateContacts;
   @override
   State<ModalBottomSheet> createState() => _ModalBottomSheetState();
 }
@@ -17,6 +19,9 @@ class _ModalBottomSheetState extends State<ModalBottomSheet> {
   final nameController = TextEditingController();
   final emailController = TextEditingController();
   final phoneNumberController = TextEditingController();
+  final nameFocus = FocusNode();
+  final emailFocus = FocusNode();
+  final phoneFocus = FocusNode();
   String nameText = '';
   String emailText = '';
   String phoneText = '';
@@ -29,11 +34,9 @@ class _ModalBottomSheetState extends State<ModalBottomSheet> {
     nameController.dispose();
     emailController.dispose();
     phoneNumberController.dispose();
-  }
-
-  void onComplete() {
-    FocusScope.of(context).unfocus();
-    setState(() {});
+    nameFocus.dispose();
+    emailFocus.dispose();
+    phoneFocus.dispose();
   }
 
   @override
@@ -158,7 +161,6 @@ class _ModalBottomSheetState extends State<ModalBottomSheet> {
                       setState(() {});
                       nameText = value;
                     },
-                    onComplete,
                   ),
                   getTextField(
                     TextInputType.emailAddress,
@@ -168,7 +170,6 @@ class _ModalBottomSheetState extends State<ModalBottomSheet> {
                       setState(() {});
                       emailText = value;
                     },
-                    onComplete,
                   ),
                   getTextField(
                     TextInputType.phone,
@@ -178,7 +179,6 @@ class _ModalBottomSheetState extends State<ModalBottomSheet> {
                       setState(() {});
                       phoneText = value;
                     },
-                    onComplete,
                   ),
                 ],
               ),
@@ -245,6 +245,7 @@ class _ModalBottomSheetState extends State<ModalBottomSheet> {
                       image: _image,
                     ),
                   );
+                  widget.onUpdateContacts(widget.contacts);
 
                   nameController.clear();
                   emailController.clear();

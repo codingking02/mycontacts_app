@@ -16,6 +16,12 @@ class ContactScreen extends StatefulWidget {
 
 class _ContactScreenState extends State<ContactScreen> {
   List<Contact> contacts = [];
+  void _updateContacts(List<Contact> updatedContacts) {
+    setState(() {
+      contacts = updatedContacts;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -89,6 +95,7 @@ class _ContactScreenState extends State<ContactScreen> {
                               builder: (context) {
                                 return ModalBottomSheet(
                                   contacts: contacts,
+                                  onUpdateContacts: _updateContacts,
                                 );
                               },
                             );

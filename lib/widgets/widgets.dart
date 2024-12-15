@@ -10,13 +10,12 @@ double getMediaQueryHeight(double number, BuildContext context) {
 }
 
 Widget getTextField(
-    TextInputType textinputtype,
-    String hinttext,
-    TextEditingController controller,
-    void Function(String text) onChnaged,
-    void Function() onEditingComplete) {
+  TextInputType textinputtype,
+  String hinttext,
+  TextEditingController controller,
+  void Function(String text) onChnaged,
+) {
   return TextField(
-    onEditingComplete: onEditingComplete,
     onChanged: onChnaged,
     keyboardType: textinputtype,
     style: GoogleFonts.inter(
