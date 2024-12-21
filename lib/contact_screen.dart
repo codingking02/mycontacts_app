@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:gif/gif.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mycontacts_app/contact_item.dart';
 import 'package:mycontacts_app/modal_bottom_sheet.dart';
@@ -89,7 +88,6 @@ class _ContactScreenState extends State<ContactScreen> {
                           elevation: 10,
                           onPressed: () {
                             showModalBottomSheet(
-                              isScrollControlled: true,
                               backgroundColor: Colors.transparent,
                               context: context,
                               builder: (context) {
@@ -125,12 +123,7 @@ class _ContactScreenState extends State<ContactScreen> {
           ? Column(
               children: [
                 const Spacer(),
-                Gif(
-                  image: const AssetImage('assets/contact.gif'),
-                  autostart: Autostart.loop,
-                  fps: 30,
-                  useCache: true,
-                ),
+                Image.asset('assets/contact.gif'),
                 Text(
                   'There is No Contacts Added Here',
                   style: GoogleFonts.inter(

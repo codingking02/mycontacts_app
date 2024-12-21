@@ -32,7 +32,6 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_svg: ^2.0.16
-  gif: ^2.3.0
   google_fonts: ^6.2.1
   image_picker: ^1.1.2
 
